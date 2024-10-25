@@ -25,9 +25,16 @@ function LoginPseudo($pseudo) {
     return $stmt->rowCount();
 }
 
-function CheckPassword($pseudo) {
+function LoginCheckPassword($pseudo) {
     $sql = "SELECT password from profil WHERE pseudo=:pseudo";
     $stmt = SetDb()->prepare($sql);
     $stmt->execute(['pseudo' => $pseudo]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetch();
+}
+
+function ProfilUpdate($bio, $birthday, $stream, $gender, $id) {
+    $sql= "UPDATE profil SET biographie = :bio, birthday = :birthday', stream = :stream , genre = :gender 
+        WHERE pseudo = :id";
+    $stmt = SetDb()->prepare($sql);
+    return $stmt->execute(['bio' => $bio, 'birthday' => $birthday, 'stream' => $stream, 'gender' => $gender, 'id' => $id]);
 }

@@ -12,10 +12,11 @@ switch($page){
         SignupPage();
         break;
     case "signup2":
+        SignupPage2();
         break;
     case "signup3":
         break;
-    case "profilePage.php":
+    case "profilePage":
         ProfilePage();
         break;
     case "profilPage.php":
