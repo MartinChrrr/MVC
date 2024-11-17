@@ -54,9 +54,11 @@ function SignupPage2() {
 
 function SignupPage3() {
     $datas = [
-        "description" => "Remplis ton profil",
+        "description" => "Remplis tes préférences de jeux",
         "title" => "Remplis ton profil",
-        "view" => "views/signup_page.php",
+        "view" => "views/signup3_page.php",
+        "horaire" => GetHoraire(),
+        "tags" => GetTags(),
     ];
     DrawPage($datas);
 }

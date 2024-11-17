@@ -1,6 +1,8 @@
 <?php
 require_once './controller/pages_controller.php';
 
+
+
 $path = explode("/", $_GET['page']);
 $page = $path[0];
 
@@ -22,6 +24,11 @@ switch($page){
     case "profilPage.php":
         ProfilePage();
         break;
+    default:
+    require_once "./models/global_raw_array.php";
+    print_r(GetHoraire());
+    ProfilePage();
+    break;
 
 
 }

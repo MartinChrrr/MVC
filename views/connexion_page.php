@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <h1>App de merde</h1>
+    <h1>App de merde </h1>
     <form action="controller/form_controller.php" method="post">
         <div class="error_connexion">Error</div>
         
