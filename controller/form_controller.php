@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
     } else if (isset($_POST['signup2'])) {
-        $id_input = $_POST["pseudo"];
+        $pseudo = $_POST["pseudo"];
         $gender = $_POST["gender"];
         $birthday = date('Y-m-d' ,strtotime($_POST["birthday"]));
         $bio = $_POST["bio"];
@@ -63,11 +63,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            if($_SESSION['pseudo'] == $id_input){
-                if(ProfilUpdate($bio, $birthday, $stream, $gender, $id_input)) {
+            if($_SESSION['pseudo'] == $pseudo){
+                if(ProfilUpdate($bio, $birthday, $stream, $gender, $pseudo)) {
                     header("Location: ./index.php?page=inscription3");
                 }
             }
+        }
+    } else if (isset($_POST['signup3'])) {
+        $pseudo = $_SESSION['pseudo'];
+        $horaire = $_POST["player-horaire"];
+        $playerTags = $_POST["player-tags"];
+        
+        $str_horaire = implode(" ",$horaire);
+        $str_tags = implode(" ",$playerTags);
+        if(ProfilUpdateTags($str_horaire, $str_tags, $pseudo)) {
+            header("Location: ./index.php?page=profilePage");
         }
     }
 }

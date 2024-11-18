@@ -32,9 +32,15 @@ function LoginCheckPassword($pseudo) {
     return $stmt->fetch();
 }
 
-function ProfilUpdate($bio, $birthday, $stream, $gender, $id) {
+function ProfilUpdate($bio, $birthday, $stream, $gender, $pseudo) {
     $sql= "UPDATE profil SET biographie = :bio, birthday = :birthday', stream = :stream , genre = :gender 
-        WHERE pseudo = :id";
+        WHERE pseudo = :pseudo";
     $stmt = SetDb()->prepare($sql);
-    return $stmt->execute(['bio' => $bio, 'birthday' => $birthday, 'stream' => $stream, 'gender' => $gender, 'id' => $id]);
+    return $stmt->execute(['bio' => $bio, 'birthday' => $birthday, 'stream' => $stream, 'gender' => $gender, 'pseudo' => $pseudo]);
+}
+
+function ProfilUpdateTags($horaires, $tags, $pseudo) {
+    $sql = "UPDATE profil SET horaires = :horaires ,tags = :tags  WHERE pseudo = :pseudo";
+    $stmt = SetDb()->prepare($sql);
+    return $stmt->execute(['horaires' => $horaires, 'tags' => $tags, 'pseudo'  => $pseudo]);
 }

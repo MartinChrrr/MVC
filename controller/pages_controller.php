@@ -53,6 +53,8 @@ function SignupPage2() {
 }
 
 function SignupPage3() {
+    $pseudo = "Anna";
+    //$pseudo = ConnexionPseudo();
     $datas = [
         "description" => "Remplis tes préférences de jeux",
         "title" => "Remplis ton profil",

@@ -17,6 +17,7 @@ switch($page){
         SignupPage2();
         break;
     case "signup3":
+        SignupPage3();
         break;
     case "profilePage":
         ProfilePage();
@@ -25,10 +26,8 @@ switch($page){
         ProfilePage();
         break;
     default:
-    require_once "./models/global_raw_array.php";
-    print_r(GetHoraire());
-    ProfilePage();
-    break;
+        ProfilePage();
+        break;
 
 
 }

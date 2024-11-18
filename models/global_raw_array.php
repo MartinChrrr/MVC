@@ -14,14 +14,14 @@ function GetTags() {
 
 function GetHoraire() {
     $horaire = array(
-        ["value" => "minuit" , "show"=> "00h-3h"],
-        ["value" =>"trois" ,"show" => "3h-6h"],
-        ["value" =>"six","show" => "6h-9h"],
-        ["value" =>"neuf","show" => "9h-12h"],
-        ["value" =>"douze","show"=> "12h-15h"],
-        ["value" =>"quinze","show" => "15h-18h"],
-        ["value" =>"dixhuit","show" => "18h-21h"],
-        ["value" =>"vingtun","show" => "21h-00h"],
+        ["key" => "minuit" , "value"=> "00h-3h"],
+        ["key" =>"trois" ,"value" => "3h-6h"],
+        ["key" =>"six","value" => "6h-9h"],
+        ["key" =>"neuf","value" => "9h-12h"],
+        ["key" =>"douze","value"=> "12h-15h"],
+        ["key" =>"quinze","value" => "15h-18h"],
+        ["key" =>"dixhuit","value" => "18h-21h"],
+        ["key" =>"vingtun","value" => "21h-00h"],
     );
     return $horaire;
 }

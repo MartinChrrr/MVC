@@ -1,5 +1,5 @@
 <?php
-function DrawPage($data) {
+function DrawPage(array $data) {
     extract($data);
     require $view;
 }

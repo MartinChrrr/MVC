@@ -1,58 +1,4 @@
 <?php
-require ("phpLogic/config.php");
-session_start();
-//var_dump($_SESSION);
-if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
-    // Contenu de votre page
-    $id = $_SESSION['nom_utilisateur'];
-    echo "bien";
-} else {
-    // On retourne sur la page de connexion d'un utilisateur
-    //echo "pas bien";
-    header("Location:index.php");
-}
-
-
-$sql_import = "SELECT * FROM profil WHERE id = '{$id}'";
-$import = $connexion->query($sql_import);
-$row = $import->fetch_assoc();
-
-// <option value="minuit">00h-3h</option>
-// <option value="trois">3h-6h</option>
-// <option value="six">6h-9h</option>
-// <option value="neuf">9h-12h</option>
-// <option value="douze">12h-15h</option>
-// <option value="quinze">15h-18h</option>
-// <option value="dixhuit">18h-21h</option>
-// <option value="vinghtun">21h-00h</option>
-$values = array("00h-3h", "3h-6h", "6h-9h", "9h-12h", "12h-15h", "15h-18h", "18h-21h", "21h-00h");
-$key = array ( "minuit", "trois", "six" , "neuf", "douze",  "quinze" , "dixhuit", "vingtun");
-
-$tags = array("Nul", "Nulles", "Nulle");
-
-// $horaire = array(
-//     $key[0] => $values[0],
-//     $key[1] => $values[1],
-//     $key[2] => $values[2],
-//     $key[3] => $values[3],
-//     $key[4] => $values[4],
-//     $key[5] => $values[5],
-//     $key[6] => $values[6],
-//     $key[7] => $values[7],
-
-// );
-
-// $horaire = array(
-//     "minuit" => "00h-3h",
-//     "trois" => "3h-6h",
-//     "six" => "6h-9h",
-//     "neuf" => "9h-12h",
-//     "douze"=> "12h-15h",
-//     "quinze" => "15h-18h",
-//     "dixhuit" => "18h-21h",
-//     "vingtun" => "21h-00h",
-
-// );
 
 
 
@@ -85,9 +31,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<?= $description ?>">
     <link rel="stylesheet" href="style/style.css">
 
-    <title>Ton Profile</title>
+    <title><?= $title?></title>
 
 </head>
 
