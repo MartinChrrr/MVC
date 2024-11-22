@@ -1,5 +1,5 @@
 <?php
-
+require_once "models/login_model.php";
 session_start();
 
 function ConnexionID() {
@@ -17,7 +17,7 @@ function ConnexionID() {
 }
 
 function ConnexionPseudo() {
-    if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
+    if ($_SESSION['token'] == GetToken($_SESSION['nom_utilisateur'])  && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
         // Contenu de votre page
         $pseudo = $_SESSION['nom_utilisateur'];
         //echo "bien";

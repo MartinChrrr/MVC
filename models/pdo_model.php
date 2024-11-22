@@ -18,6 +18,8 @@ function SetDb() {
         } catch (PDOException $e) {
             // En cas d'erreur de connexion, afficher un message
             die('Erreur de connexion à la base de données : ' . $e->getMessage());
+        } catch (Exception $e) {
+            echo "Erreur: ". $e -> getMessage();
         }
 
     }

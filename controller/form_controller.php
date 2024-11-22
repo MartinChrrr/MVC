@@ -19,8 +19,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             if( CheckEmailAndPseudo($email,$pseudo) > 0) {
                 //email or pseudo already used
             } else {
-                if(Signup($id,$email,$pseudo,$password_enc,$name, $first_name)) {
-                    $_SESSION['id'] = $id;
+                $token = bin2hex(random_bytes(32));
+                if(Signup($id,$email,$pseudo,$password_enc,$name, $first_name, $token)) {
+                    $_SESSION["token"] = $token;
                     $_SESSION['nom_utilisateur'] = $pseudo;
                     header("Location: ./index.php?page=signup2");
                 } else {
@@ -36,8 +37,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         if(!empty($pseudo) && !empty($passwrd)) {
             if(LoginPseudo($pseudo) > 0 && password_verify($passwrd,LoginCheckPassword($pseudo))) {
-                
-                $_SESSION['id'] = $id;
+                $token = bin2hex(random_bytes(32));
+                $_SESSION["token"] = $token;
+                UpdateToken($token, $pseudo);
                 $_SESSION['nom_utilisateur'] = $pseudo;
                 header("Location: ./index.php?page=profilPage");
             } else {

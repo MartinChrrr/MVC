@@ -40,8 +40,8 @@ function SignupPage(){
 }
 
 function SignupPage2() {
-    $pseudo = "Anna";
-    //$pseudo = ConnexionPseudo();
+    //$pseudo = "Anna";
+    $pseudo = ConnexionPseudo();
     $datas = [
         "description" => "Remplis ton profil",
         "title" => "Remplis ton profil",
@@ -53,8 +53,8 @@ function SignupPage2() {
 }
 
 function SignupPage3() {
-    $pseudo = "Anna";
-    //$pseudo = ConnexionPseudo();
+    //$pseudo = "Anna";
+    $pseudo = ConnexionPseudo();
     $datas = [
         "description" => "Remplis tes préférences de jeux",
         "title" => "Remplis ton profil",

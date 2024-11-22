@@ -1,8 +1,8 @@
 <?php
-require_once "./models/pdoModels.php";
+require_once "./models/pdo_model.php";
 
 
-function GetProfile($id) {
+function GetProfile(string $id) {
     $req = "SELECT * FROM profile WHERE id='" . $id ."'";
     $stmt = SetDB()->prepare($req);
     $stmt->execute();
