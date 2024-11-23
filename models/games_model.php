@@ -1,6 +1,6 @@
 <?php
 
-require_once "./models/pdoModels.php";
+require_once "./models/pdo_model.php";
 
 function GetGames() 
 {

@@ -31,7 +31,7 @@
             </div>
         
         <div class="link-connexion medium-regular">
-            Vous n'avez pas de compte ? <a href="index.php?page=inscription">S'inscrire</a>
+            Vous n'avez pas de compte ? <a href="index.php?page=signup">S'inscrire</a>
             
         </div>
         
