@@ -1,7 +1,9 @@
 <?php
 
-require_once ("./models/pdo_model.php");
-require_once ("./models/login_model.php");
+require("models/pdo_model.php");
+require_once("models/login_model.php");
+
+
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     //Registartion Part

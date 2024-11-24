@@ -1,4 +1,5 @@
 <?php
+  require_once ("models/pdo_model.php");
 require_once './controller/pages_controller.php';
 
 

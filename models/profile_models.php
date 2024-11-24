@@ -10,3 +10,14 @@ function GetProfile(string $id) {
     $stmt->closeCursor();
     return $datas;
 }
+
+function GetGamesFromID( string $id) {
+    $sql = "SELECT * FROM jouer WHERE id_profil = '{$id}'";
+    $stmt = SetDB()->prepare($sql);
+    $stmt->execute();
+    $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $array_games = array();
+    foreach($datas as $data) {
+        
+    }
+}

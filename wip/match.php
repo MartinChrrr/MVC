@@ -4,7 +4,7 @@ session_start();
 //var_dump($_SESSION);
 if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
     // Contenu de votre page
-    $id = $_SESSION['nom_utilisateur'];
+    $id = $_SESSION['id'];
     //echo "bien";
 } else {
     // On retourne sur la page de connexion d'un utilisateur
@@ -17,14 +17,23 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 
 <?php
     $id = $_SESSION['id'];
+    var_dump($_SESSION["list-match"]);
+    if(isset($_SESSION["list-match"])); {
+        $list_id = $_SESSION["list-match"];
+    }
+
+    
+    $id_other = array_key_first($list_id);
+    //echo $id_other;
     $bio; $image; $genre;
 
 
-    $sql_profil = "SELECT * FROM profil WHERE id = '{$id}'";
+    $sql_profil = "SELECT * FROM profil WHERE id = '{$id_other}'";
     $result = $connexion->query($sql_profil);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         //var_dump($row);
+        $name= $row['pseudo'];
         $bio = $row['biographie'];
         $image = $row['photo'];
         $dateNaissance = $row['birthday'];
@@ -52,7 +61,7 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
     );
 
     
-    $sql_jeux =  "SELECT * FROM jouer WHERE id_profil = '{$id}'";
+    $sql_jeux =  "SELECT * FROM jouer WHERE id_profil = '{$id_other}'";
     $result_jeux = $connexion->query($sql_jeux);
     $array_jeux = array();
     if ($result_jeux->num_rows > 0) {
@@ -85,21 +94,17 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 
 <body>
     <section class="top-bar">
-        <h4>Mon Profil</h4>
-        <a href="./mesjeux.php" class="button-top-bar">
-            <i class="button-top-bar-icon" data-lucide="pen"></i>
+        <a href="javascript:history.go(-1)" class="return-button-top-bar">
+            <i class="button-top-bar-icon" data-lucide="arrow-left"></i>
         </a>
-
-
-
-        
+        <h4>Matchmaking</h4>    
     </section>
 
     <div class="profil-card">
             <header>
                 <img src=" <?php echo $image; ?> ">
                 <div class="profil-text">
-                    <h5> <?php echo $_SESSION['nom_utilisateur']; ?> </h5>
+                    <h5> <?php echo $name ?> </h5>
                     <div class="tags">
                         <label class="tag">
                             <?php echo $age . " ans" ;?>
@@ -156,7 +161,7 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
         </div>
 
 <?php
-    include("./view/tabBar.php");
+    include("./view/likeBar.php");
 ?>
     
     <script src="https://unpkg.com/lucide@latest"></script>

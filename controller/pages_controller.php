@@ -4,6 +4,7 @@ require_once ("controller/verification_controller.php");
 require_once ("controller/utilities.php");
 require_once "models/global_raw_array.php";
 
+
 function ProfilePage() {
     
     $pseudo = ConnexionPseudo();
