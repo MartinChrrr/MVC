@@ -72,7 +72,8 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Business</title>
+  <title><?= $title ?></title>
+  <meta name="description" content="<?= $description ?>">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -156,7 +157,7 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
         </div>
 
 <?php
-    include("./view/tabBar.php");
+    //include("./view/tabBar.php");
 ?>
     
     <script src="https://unpkg.com/lucide@latest"></script>
