@@ -83,5 +83,29 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         if(ProfilUpdateTags($str_horaire, $str_tags, $pseudo)) {
             header("Location: ./index.php?page=profilePage");
         }
+    } else if (isset($_POST["jeux"])) {
+        $games = $_POST['jeux'];
+        if(!empty($jeux)) {
+            $pseudo = $_SESSION['pseudo'];
+            $id = GetIDFromProfil($pseudo);
+            $n = count($games);
+            foreach($games as $game) {
+                AddGame($jeu, $game);
+            }
+            header("Location: ./index.php?page=profilPage");
+        }
+    } else if (isset($_POST["modifier_jeux"])) {
+        $games = $_POST['jeux'];
+        if(!empty($games)) {
+            $pseudo = $_SESSION['pseudo'];
+            $id = GetIDFromProfil($pseudo);
+            $n = count($jeux);
+            if(DeleteAllGamesFromID($id)){
+                foreach($games as $game) {
+                    AddGame($jeu, $game);
+                }
+                header("Location: ./index.php?page=profilPage");
+            }
+        }
     }
 }

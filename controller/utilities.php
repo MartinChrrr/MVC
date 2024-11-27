@@ -4,39 +4,44 @@ function DrawPage(array $data) {
     require $view;
 }
 
-//Test if 
+//Test if the second parameter is in the third parameter array
 //@parameters 
-function CheckArray(string $name, string $word, array $array) {
+//@out strings to create buttons
+function CheckStringInArray(string $name, string $word, array $array) {
     switch($name){
         case "tags":
             if(in_array($word, $array)) {
-                DrawTagsButton($word, true);
+                return DrawTagsButton($word, true);
             } else {
-                DrawTagsButton($word);
+                return DrawTagsButton($word);
             }
-            break;
-        case "games":
-            if(in_array($word, $array)) {
-                DrawGamesButton($word, true);
-            } else {
-                DrawGamesButton($word);
-            }
-            break;
-        case "horaire":
-            if(in_array($word, $array)) {
-                DrawHoraireButton($word, true);
-            } else {
-                DrawHoraireButton($word);
-            }
-            break;
         case "gender":
             if(in_array($word, $array)) {
-                DrawGenderOption($word, true);
+                return DrawGenderOption($word, true);
             } else {
-                DrawGenderOption($word);
+                return DrawGenderOption($word);
             }
-            break;
         default:
-            break;
+        return "";
     }
+}
+
+function CheckArrayInArray(string $name,array $arrayToFind,array $arrayIn) {
+    switch($name){
+        case "horaire":
+            if (in_array($arrayToFind,$arrayIn)) {
+                return DrawHoraireButton($arrayToFind, true);
+            } else {
+                return DrawHoraireButton($arrayToFind);
+            }
+        case "games":
+            if (in_array($arrayToFind,$arrayIn)) {
+                return DrawGamesButton($arrayToFind, true);
+            } else {
+                return DrawGamesButton($arrayToFind);
+            }
+        default:
+        return "";
+    }
+
 }
