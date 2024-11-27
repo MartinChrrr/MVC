@@ -5,16 +5,33 @@ require_once ("controller/utilities.php");
 require_once "models/global_raw_array.php";
 
 
+function ModifyPage() {
+    $pseudo = ConnexionPseudo();
+    $id = GetIDFromProfil($pseudo);
+    $datas = [
+        "description" => "Modifie ton profil",
+        "title" => "Modifie ton profil",
+        "view" => "view/modify_page.php",
+        "layout" => "view/layout.php",
+        "pseudo" => $pseudo,
+        "gender" => "",
+        "games" => "",
+    ];
+}
+
 function ProfilePage() {
     
     $pseudo = ConnexionPseudo();
+    $id = GetIDFromProfil($pseudo);
 
     $datas = [
-        "description" => "Profil ",
+        "description" => "Page de profil",
         "title" => "Profil utilisateur",
         "view" => "view/profil_page.php",
         "layout" => "view/layout.php",
         "pseudo" => $pseudo,
+        "profil" => "",
+        "games" => "",
     ];
     
     DrawPage($datas);
@@ -30,6 +47,7 @@ function ConnexionPage() {
 
 }
 
+
 function SignupPage(){
     $datas = [
         "description" => "Page d'inscription ",
@@ -43,6 +61,7 @@ function SignupPage(){
 function SignupPage2() {
     //$pseudo = "Anna";
     $pseudo = ConnexionPseudo();
+    $id = GetIDFromProfil($pseudo);
     $datas = [
         "description" => "Remplis ton profil",
         "title" => "Remplis ton profil",
@@ -56,6 +75,7 @@ function SignupPage2() {
 function SignupPage3() {
     //$pseudo = "Anna";
     $pseudo = ConnexionPseudo();
+    $id = GetIDFromProfil($pseudo);
     $datas = [
         "description" => "Remplis tes préférences de jeux",
         "title" => "Remplis ton profil",
