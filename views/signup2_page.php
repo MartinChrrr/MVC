@@ -44,7 +44,7 @@
 
 <body>
     <h1>App de merde</h1>
-    <form action="#" method="post">
+    <form action="controller/form_controller.php" method="post">
 
         <p>Pseudo</p>
         <div class="field dark2">
@@ -57,7 +57,7 @@
             <select class="dark2" name="gender">
                 <?php
                 foreach($genders as $gender) {
-                    echo "<option value='" . strtolower($gender) . "'> " . $gender . "</option>";
+                    echo DrawGenderOption($gender);
                 }
                 ?>
 

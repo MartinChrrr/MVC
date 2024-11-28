@@ -23,8 +23,10 @@ try {
         case "profilePage":
             ProfilePage();
             break;
-        case "profilPage.php":
-            ProfilePage();
+        case "modify":
+            ModifyPage();
+            break;
+        case "modify_games":
             break;
         default:
             ProfilePage();

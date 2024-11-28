@@ -27,3 +27,9 @@ function GetGamesFromID( string $id) {
         
     }
 }
+
+function UpdateHoraireAndTags(string $horaire, string $tags, $pseudo) {
+    $sql = "UPDATE profil SET horaires =:horaire ,tags =:tags  WHERE pseudo = :pseudo";
+    $stmt = SetDB()->prepare($sql);
+    return $stmt->execute(["horaire" => $horaire, "tags" => $tags,"pseudo" => $pseudo]);
+}

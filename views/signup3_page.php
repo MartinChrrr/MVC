@@ -21,7 +21,7 @@ require_once "views/components/buttons.php";
         <h1>Selectionnes des tags</h1>
         <p class="large-regular">Tes futurs amis te trouveront plus facilement <br>en filtrant vos points communs.</p>
     </header>
-    <form action="#" method="post">
+    <form action="controller/form_controller.php" method="post">
     <div class="list-checkbox-button">
 
         <?php

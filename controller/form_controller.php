@@ -104,8 +104,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 foreach($games as $game) {
                     AddGame($jeu, $game);
                 }
-                header("Location: ./index.php?page=profilPage");
+                header("Location: ./index.php?page=modify");
             }
+        }
+    } else if(isset(($_POST['modify'])) ){
+        $pseudo = $_SESSION['pseudo'];
+        $horaire = $_POST["player-horaire"];
+        $playerTags = $_POST["player-tags"];
+        $str_horaire = implode(" ",$horaire);
+        $str_tags = implode(" ",$playerTags);
+        if(UpdateHoraireAndTags($str_horaire, $str_tags,$pseudo)) {
+            header("Location: ./index.php?page=profilPage");
+        } else {
+            echo "connexion échoué";
         }
     }
 }

@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
+    <meta name="description" content="<?= $description ?>">
 
-    <title>Modifie ton profile</title>
+    <title><?= $title?> </title>
 
 </head>
 
@@ -15,7 +16,7 @@
         <h1>Modifie ton profile</h1>
         <!-- <p class="large-regular">Tes futurs amis te trouveront plus facilement <br>en filtrant vos points communs.</p> -->
     </header>
-    <form action="#" method="post">
+    <form action="controller/form_controller.php" method="post">
 
     <p>Genre</p>
         <div class="field dark2">
@@ -63,12 +64,12 @@
 
         <p>Bio</p>
         <div class="field dark2">
-            <textarea class="dark2" type="text" name="bio" placeholder="Ecriver une bio." rows="5"><?php echo $biographie;?></textarea>
+            <textarea class="dark2" type="text" name="bio" placeholder="Ecriver une bio." rows="5"><?php echo $profil['biographie'];?></textarea>
         </div>
 
         <p>Stream</p>
         <div class="field dark2">
-            <textarea class="dark2" type="text" name="stream" placeholder="Ton lien Twitch" rows="1"><?php echo $stream;?></textarea>
+            <textarea class="dark2" type="text" name="stream" placeholder="Ton lien Twitch" rows="1"><?php echo $profil['stream'];?></textarea>
         </div>
         <div class="titre_liste">
             <p>Horaires De jeux</p>
@@ -101,7 +102,7 @@
         
 
         <div class="connexion-button primary500">
-            <input class="primary500" type="submit" value="Enregistrer">
+            <input class="primary500" type="submit" name="modify" value="Enregistrer">
         </div>
 
 
