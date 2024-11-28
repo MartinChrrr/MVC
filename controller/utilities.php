@@ -41,7 +41,13 @@ function CheckArrayInArray(string $name,array $arrayToFind,array $arrayIn) {
                 return DrawGamesButton($arrayToFind);
             }
         default:
-        return "";
+            return "";
     }
 
+}
+
+function GetAge(string $birthday) {
+    $today = date("Y-m-d");
+    $age = date_diff(baseObject: date_create(datetime: $birthday), targetObject: date_create(datetime: $today)) ->format('%y');
+    return $age;
 }

@@ -29,7 +29,7 @@ if ($_SESSION['id'] != null && $_SESSION['id'] != "" && $_SESSION['nom_utilisate
         $image = $row['photo'];
         $dateNaissance = $row['birthday'];
         $aujourdhui = date("Y-m-d");
-        $age = date_diff(date_create($dateNaissance), date_create($aujourdhui)) ->format('%y');
+        $age = date_diff(date_create(datetime: $dateNaissance), date_create($aujourdhui)) ->format('%y');
         $genre = $row['genre'];
         $strHoraire = $row['horaires'];
         $strTags = $row['tags'];

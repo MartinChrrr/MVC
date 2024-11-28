@@ -56,3 +56,6 @@ function DrawGamesButton(array $game, bool $checked = false) {
     </div>';
     return $string . $string_check . $end;
 }
+
+
+

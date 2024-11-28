@@ -6,6 +6,9 @@ require_once './controller/pages_controller.php';
 try {
     $path = explode("/", $_GET['page']);
     $page = $path[0];
+    if(isset($path[1])) {
+        $other_id = $path[1];
+    }
     
     switch($page){
         case "connexion":

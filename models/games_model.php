@@ -2,7 +2,7 @@
 
 require_once "./models/pdo_model.php";
 
-function GetGames() 
+function GetAllGames() 
 {
     $sql = "SELECT * FROM jeux ";
     $stmt = SetDB()->prepare($sql);

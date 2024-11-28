@@ -90,7 +90,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             $id = GetIDFromProfil($pseudo);
             $n = count($games);
             foreach($games as $game) {
-                AddGame($jeu, $game);
+                AddGame($game, $id);
             }
             header("Location: ./index.php?page=profilPage");
         }
@@ -102,7 +102,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             $n = count($jeux);
             if(DeleteAllGamesFromID($id)){
                 foreach($games as $game) {
-                    AddGame($jeu, $game);
+                    AddGame($game, $id);
                 }
                 header("Location: ./index.php?page=modify");
             }
