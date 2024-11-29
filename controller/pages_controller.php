@@ -1,13 +1,19 @@
 <?php
+define('__ROOT__', dirname(dirname(__FILE__)));
+//static $root = dirname(dirname(__FILE__));
+//var_dump(__ROOT__);
 require_once ("models/pdo_model.php");
 require_once ("controller/verification_controller.php");
 require_once ("controller/utilities.php");
 require_once "models/global_raw_array.php";
 require_once "./models/games_model.php";
+require_once(__ROOT__."/models/profile_models.php");
+
 
 
 function ModifyPage() {
     $pseudo = ConnexionPseudo();
+    var_dump($pseudo);
     $id = GetIDFromProfil($pseudo);
     $datas = [
         "description" => "Modifie ton profil",
@@ -27,20 +33,25 @@ function SignupGames(){
         "description" => "En sélectionnant tes jeux préférés tu trouveras plus d'amis ",
         "title" => "Selectionne tes jeux préférés",
         "view" => "views/connexion_page.php",
-        "games" => 
+        "games" => GetAllGames(),
     ];
 }
 
 function ProfilePage() {
-    
+    //session_start();  
+    echo $_SESSION['nom_utilisateur'];
     $pseudo = ConnexionPseudo();
+    echo "<br>";
+    echo $_SESSION['token'];
+    echo "<br>";
+
+    echo $pseudo;
     $id = GetIDFromProfil($pseudo);
 
     $datas = [
         "description" => "Page de profil",
         "title" => "Profil utilisateur",
-        "view" => "view/profil_page.php",
-        "layout" => "view/layout.php",
+        "view" => "views/profil_page.php",
         "pseudo" => $pseudo,
         "profil" => "",
         "games" => "",

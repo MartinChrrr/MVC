@@ -1,7 +1,9 @@
 <?php
+define('__ROOT__', dirname(dirname(__FILE__)));
 
-require("models/pdo_model.php");
-require_once("models/login_model.php");
+require_once (__ROOT__ ."\models\pdo_model.php");
+
+require_once(__ROOT__ ."\models\login_model.php");
 
 
 
@@ -9,6 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     //Registartion Part
 
     if(isset($_POST['signup'])) {
+        echo "nul";
         $id = uniqid();
         $pseudo = $_POST["pseudo"];
         $name = $_POST["nom"];
@@ -16,16 +19,21 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $email = $_POST["email"];
         $passwrd = $_POST["password"];
         $password_enc= password_hash($passwrd, PASSWORD_DEFAULT);
-    
-        if(!empty($id) && !empty($pseudo) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($enc_pass)){
+        //var_dump($pseudo, $name, $first_name, $email, $passwrd);
+        //var_dump(!empty($id) && !empty($pseudo) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($password_enc));
+        if(!empty($id) && !empty($pseudo) && !empty($name) && !empty($first_name) && !empty($email) && !empty($password_enc)){
             if( CheckEmailAndPseudo($email,$pseudo) > 0) {
                 //email or pseudo already used
+                echo "ckopze";
             } else {
+                echo "test";
                 $token = bin2hex(random_bytes(32));
                 if(Signup($id,$email,$pseudo,$password_enc,$name, $first_name, $token)) {
+                    session_start();
                     $_SESSION["token"] = $token;
                     $_SESSION['nom_utilisateur'] = $pseudo;
-                    header("Location: ./index.php?page=signup2");
+                    echo ("test");
+                    //header("Location: ./index.php?page=signup2");
                 } else {
                     echo "bad";
                 }
@@ -34,19 +42,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     } else if (isset($_POST['connexion'])) {
         //Login Part
-        $pseudo = $_POST["pseudo"];
+        $email = $_POST["email"];
         $passwrd = $_POST["password"];
 
-        if(!empty($pseudo) && !empty($passwrd)) {
-            if(LoginPseudo($pseudo) > 0 && password_verify($passwrd,LoginCheckPassword($pseudo))) {
+        if(!empty($email) && !empty($passwrd)) {
+            if(LoginEmail($email) > 0 && password_verify($passwrd,LoginCheckPassword($email))) {
                 $token = bin2hex(random_bytes(32));
+                echo "test1";
+                $pseudo = GetPseudoFromMail($email);
+                session_start();
                 $_SESSION["token"] = $token;
+               
                 UpdateToken($token, $pseudo);
                 $_SESSION['nom_utilisateur'] = $pseudo;
+                
+
                 header("Location: ./index.php?page=profilPage");
+
             } else {
                 //pseudo or password incorrect
-                
+                echo "nul";
        
             }
         }

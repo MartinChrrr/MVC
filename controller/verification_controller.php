@@ -1,5 +1,8 @@
 <?php
-require_once "models/login_model.php";
+
+//define('__ROOT__', dirname(dirname(__FILE__)));
+require_once (__ROOT__ ."\models\pdo_model.php");
+require_once(__ROOT__. "\models\login_model.php");
 session_start();
 
 function ConnexionID() {
@@ -17,14 +20,20 @@ function ConnexionID() {
 }
 
 function ConnexionPseudo() {
+    
     if ($_SESSION['token'] == GetToken($_SESSION['nom_utilisateur'])  && $_SESSION['nom_utilisateur'] != null && $_SESSION['nom_utilisateur'] != "") {
         // Contenu de votre page
         $pseudo = $_SESSION['nom_utilisateur'];
+        return $pseudo;
         //echo "bien";
     } else {
         // On retourne sur la page de connexion d'un utilisateur
         //echo "pas bien";
-        header("Location:index.php?page=connexion");
+        echo($_SESSION['token'] == GetToken($_SESSION['nom_utilisateur'])  && $_SESSION['nom_utilisateur'] 
+        != null && $_SESSION['nom_utilisateur'] != "");
+        //$pseudo = $_SESSION['nom_utilisateur'];
+        //return $pseudo;
+        //header("Location:index.php?page=connexion");
     }
-    return $pseudo;
+    
 }
