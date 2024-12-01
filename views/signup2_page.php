@@ -1,31 +1,6 @@
 <?php 
-
-
-
-
-
-
-
-
-    // if(isset($_FILES['image'])) {
-        
-    //     $target_dir = "./images/profile/";
-    //     $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    //     $uploadOk = 1;
-    //     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    //     // Check if image file is a actual image or fake image
-    //     if (isset($_POST["submit"])) {
-    //         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    //         if ($check !== false) {
-    //             echo "File is an image - " . $check["mime"] . ".";
-    //             $uploadOk = 1;
-    //         } else {
-    //             echo "File is not an image.";
-    //             $uploadOk = 0;
-    //         }
-    //     }
-    // }
-
+require_once "views/components/buttons.php";
+//echo $_SESSION["nom_utilisateur"];
 ?>
 
 
@@ -49,13 +24,14 @@
         <p>Pseudo</p>
         <div class="field dark2">
 
-            <input class="dark2" name="pseudo" type="text" value="<?php  ?>" required
-                autocomplete="off" disabled>
+            <input class="dark2" name="pseudo" type="text" value="<?php echo $pseudo; ?>" required
+                autocomplete="off" >
         </div>
         <p>Genre</p>
         <div class="field dark2">
             <select class="dark2" name="gender">
                 <?php
+                
                 foreach($genders as $gender) {
                     echo DrawGenderOption($gender);
                 }

@@ -32,8 +32,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     session_start();
                     $_SESSION["token"] = $token;
                     $_SESSION['nom_utilisateur'] = $pseudo;
-                    echo ("test");
-                    //header("Location: ./index.php?page=signup2");
+                   
+                    header("Location: ./index.php?page=signup2");
                 } else {
                     echo "bad";
                 }
@@ -51,7 +51,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 echo "test1";
                 $pseudo = GetPseudoFromMail($email);
                 session_start();
-                $_SESSION["token"] = $token;
                
                 UpdateToken($token, $pseudo);
                 $_SESSION['nom_utilisateur'] = $pseudo;
@@ -66,30 +65,34 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
     } else if (isset($_POST['signup2'])) {
-        $pseudo = $_POST["pseudo"];
+        session_start();
         $gender = $_POST["gender"];
         $birthday = date('Y-m-d' ,strtotime($_POST["birthday"]));
         $bio = $_POST["bio"];
         $stream = $_POST["stream"];
-        if(isset($_FILES['image'])) {
+        $pseudo = $_POST["pseudo"];
+        
+        //if(isset($_FILES['image'])) {
             // $img_name = $_FILES['image']['name'];
             // $img_type = $_FILES['image']['type'];
             // $tmp_name = $_FILES['image']['tmp_name'];
     
             // $img_explode = explode('.', $img_type);
             // $img_end = end($img_explode);
-            $target_dir = "./images/profile/";
-            $target_file = $target_dir . basename($_FILES["image"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            if($_SESSION['pseudo'] == $pseudo){
-                if(ProfilUpdate($bio, $birthday, $stream, $gender, $pseudo)) {
-                    header("Location: ./index.php?page=inscription3");
-                }
+            //$target_dir = "./images/profile/";
+            //$target_file = $target_dir . basename($_FILES["image"]["name"]);
+            //$uploadOk = 1;
+            //$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        if($_SESSION['nom_utilisateur'] == $pseudo){
+            echo "test";
+            if(ProfilUpdate($bio, $birthday, $stream, $gender, $pseudo)) {
+                header("Location: ../index.php?page=signup3");
             }
+            //}
         }
     } else if (isset($_POST['signup3'])) {
-        $pseudo = $_SESSION['pseudo'];
+        session_start();
+        $pseudo = $_SESSION['nom_utilisateur'];
         $horaire = $_POST["player-horaire"];
         $playerTags = $_POST["player-tags"];
         

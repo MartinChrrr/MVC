@@ -39,21 +39,17 @@ function SignupGames(){
 
 function ProfilePage() {
     //session_start();  
-    echo $_SESSION['nom_utilisateur'];
-    $pseudo = ConnexionPseudo();
-    echo "<br>";
-    echo $_SESSION['token'];
-    echo "<br>";
 
-    echo $pseudo;
+    $pseudo = ConnexionPseudo();
     $id = GetIDFromProfil($pseudo);
+    $profil = GetProfile($id);
 
     $datas = [
         "description" => "Page de profil",
         "title" => "Profil utilisateur",
         "view" => "views/profil_page.php",
         "pseudo" => $pseudo,
-        "profil" => "",
+        "profil" => $profil,
         "games" => "",
     ];
     

@@ -58,11 +58,11 @@ function GetToken(string $pseudo) {
 }
 
 function ProfilUpdate(string $bio, $birthday,string $stream,string $gender,string $pseudo) {
-    $sql= "UPDATE profil SET biographie = :bio, birthday = :birthday', stream = :stream , genre = :gender 
-        WHERE pseudo = :pseudo";
+    $sql= "UPDATE profil SET biographie = :bio, birthday = :birthday, stream = :stream , genre = :gender 
+        WHERE pseudo = '$pseudo'";
     $stmt = SetDb()->prepare($sql);
     return $stmt->execute(['bio' => $bio, 'birthday' => $birthday, 
-    'stream' => $stream, 'gender' => $gender, 'pseudo' => $pseudo]);
+    'stream' => $stream, 'gender' => $gender]);
 }
 
 function ProfilUpdateTags(string $horaires,string $tags,string $pseudo) {

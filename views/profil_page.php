@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <?php var_dump($profil)?>
     <section class="top-bar">
         <h4>Mon Profil</h4>
         <a href="./mesjeux.php" class="button-top-bar">
