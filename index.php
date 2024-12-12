@@ -1,14 +1,13 @@
 <?php
-  require_once ("models/pdo_model.php");
+require_once ("models/pdo_model.php");
 require_once './controller/pages_controller.php';
 
 
 try {
     $path = explode("/", $_GET['page']);
     $page = $path[0];
-    if(isset($path[1])) {
-        $other_id = $path[1];
-    }
+
+    //echo $_SESSION["token"];
     
     switch($page){
         case "connexion":

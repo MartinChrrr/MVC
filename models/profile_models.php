@@ -14,7 +14,7 @@ function GetProfile(string $id) {
     $stmt = SetDB()->prepare($req);
     $stmt->execute(["id" => $id]);
     $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
+    //$stmt->closeCursor();
     return $datas;
 }
 

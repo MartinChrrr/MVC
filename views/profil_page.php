@@ -1,3 +1,8 @@
+<?php 
+    //define('__ROOT__', dirname(dirname(__FILE__)));
+    require_once(__ROOT__ ."/views/components/profile_components.php");
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -17,7 +22,7 @@
 </head>
 
 <body>
-    <?php var_dump($profil)?>
+    <?php var_dump($profil); var_dump($games);?>
     <section class="top-bar">
         <h4>Mon Profil</h4>
         <a href="./mesjeux.php" class="button-top-bar">
@@ -31,51 +36,59 @@
 
     <div class="profil-card">
             <header>
-                <img src=" <?php echo $image; ?> ">
+                <!-- <img src=" 
+                 <?php //echo $profil["photo"]; ?> 
+                 "> -->
                 <div class="profil-text">
-                    <h5> <?php echo $_SESSION['nom_utilisateur']; ?> </h5>
+                    <h5> <?php echo $pseudo; ?> </h5>
                     <div class="tags">
                         <label class="tag">
-                            <?php echo $age . " ans" ;?>
+                            <?php 
+                            if($age != null) {
+                                echo $age . " ans" ;
+                            }
+                            
+                            ?>
                         </label>
                         <label class="tag">
-                            <?php echo $genre;?>
+                            <?php
+                            if($profil["genre"] != null) {
+                                echo $profil["genre"];
+                            }?>
                         </label>
                         <?php
-                        foreach($tags as $t) {
-                            echo "<label class='tag'>
-                                ". $t ."
-                            </label>
-                            ";
+                        if(count($tags) > 0) {
+                            foreach($tags as $t) {
+                                echo DrawTags($t);
+                            }
+    
+                        }
+                        if(count($horaires) > 0){
+                            foreach($horaires as $h) {
+                                DrawHoraireProfile($h);
+                                ;
+                            }
                         }
 
-                        foreach($horaire as $h) {
-                            echo "<label class='tag'>
-                                ". $HValues[$h] ."
-                            </label>
-                            ";
-                        }
 
 
                         ?>
                     </div>
                 </div>
             </header>
-            <p class="bio"> <?php echo $bio; ?> </p>
+            <p class="bio"> 
+                <?php 
+                if($profil["biographie"] != null) {
+                    echo $profil["biographie"];
+                }
+                 ?> 
+            </p>
             <p class="separation xlarge-semibold">Jeux</p>
             <div class="jeux">
                 <ul>
                     <?php 
-                        for($i = 0; $i < count($array_jeux); $i++) {
-                            $sql = "SELECT * FROM jeux WHERE id = '{$array_jeux[$i]}'";
-                            $result = $connexion->query($sql);
-                            if($result->num_rows > 0) {
-                                $row = $result->fetch_assoc();
-                                echo "<li>";
-                                echo "<img src='" . $row['image'] . "' alt= 'Image du jeu ". $row ['titre'] ."'>"; 
-                                echo "<p>" . $row['titre'] . "</p>";
-                                echo "</li>";
-                            }
+                        foreach($games as $game) {
+                            echo DrawGamesProfile($game);
                         }
                     
                     

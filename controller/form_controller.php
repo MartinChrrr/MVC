@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                
                 UpdateToken($token, $pseudo);
                 $_SESSION['nom_utilisateur'] = $pseudo;
-                
+                $_SESSION['token'] = $token;
 
                 header("Location: ./index.php?page=profilPage");
 

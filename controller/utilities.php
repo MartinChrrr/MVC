@@ -51,3 +51,4 @@ function GetAge(string $birthday) {
     $age = date_diff(baseObject: date_create(datetime: $birthday), targetObject: date_create(datetime: $today)) ->format('%y');
     return $age;
 }
+

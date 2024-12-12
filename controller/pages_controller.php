@@ -43,14 +43,33 @@ function ProfilePage() {
     $pseudo = ConnexionPseudo();
     $id = GetIDFromProfil($pseudo);
     $profil = GetProfile($id);
+    $age = null;
+    if($profil[0]["birthday"] != null) {
+        $age = GetAge($profil[0]["birthday"]);
+    }
+    $tags = explode(" ", $profil[0]["tags"]);
+    $horaires = explode(" ", $profil[0]["horaires"]);
+    $games = GetGamesFromID($id);
+    if($games == null) {
+        $games = array();
+    }
+    if($tags == null) {
+        $tags = array();
+    }
+    if($horaires == null) {
+        $horaires = array();
+    }
 
     $datas = [
         "description" => "Page de profil",
         "title" => "Profil utilisateur",
         "view" => "views/profil_page.php",
         "pseudo" => $pseudo,
-        "profil" => $profil,
-        "games" => "",
+        "profil" => $profil[0],
+        "tags" => $tags, 
+        "horaires" => $horaires,
+        "games" => $games,
+        "age" => $age,
     ];
     
     DrawPage($datas);

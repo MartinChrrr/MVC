@@ -12,6 +12,14 @@ function GetAllGames()
     return $datas;
 }
 
+function GetProfieGames(string $id) {
+    $sql = "SELECT jeux.id, jeux.titre, jeux.image, jouer.id_jeux FROM jeux, jouer WHERE jeux.id = jouer.id_jeux AND jouer.id_profil = :id";
+    $stmt = SetDb()->prepare($sql);
+    $stmt->execute(["id" => $id]);
+    $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $datas;
+}
+
 function DeleteAllGamesFromID($id) {
     $sql = "DELETE FROM jouer WHERE id_profil = :id";
     $stmt = SetDB()->prepare($sql);
