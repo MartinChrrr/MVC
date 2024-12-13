@@ -32,8 +32,20 @@ function SignupGames(){
     $datas = [
         "description" => "En sélectionnant tes jeux préférés tu trouveras plus d'amis ",
         "title" => "Selectionne tes jeux préférés",
-        "view" => "views/connexion_page.php",
+        "view" => "views/signup_games_page.php",
         "games" => GetAllGames(),
+    ];
+}
+
+function ConversationPage() {
+    $pseudo = ConnexionPseudo();
+    $id = GetIDFromProfil($pseudo);
+    $conversations = GetAllConversation($id);
+    $datas = [
+        "description" => "Ici tu trouves toutes tes conversations",
+        "title" => "Liste de tes conversations",
+        "view" => "views/conversation_list.php",
+        "conversations" => $conversations,
     ];
 }
 

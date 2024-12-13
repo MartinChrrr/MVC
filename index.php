@@ -22,6 +22,9 @@ try {
         case "signup3":
             SignupPage3();
             break;
+        case "signup_games":
+            SignupGames();
+            break;
         case "profilePage":
             ProfilePage();
             break;

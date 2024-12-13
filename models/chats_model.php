@@ -8,3 +8,17 @@ function GetAllConversation(string $id) {
     return $datas;
 }
 
+function GetOtherId($conversationID,string $id) {
+    $otherID = null;
+    $sql = "SELECT id_user1, id_user2 FROM conversation WHERE id = :id";
+    $stmt = SetDB()->prepare($sql);
+    $stmt->execute(["id" => $id]);
+    $ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if($ids["id_user1"] == $id) {
+        $otherID = $ids["id_user2"];
+    } else {
+        $otherID = $ids["id_user1"];
+    }
+    return $otherID;
+}
+
