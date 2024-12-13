@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <meta name="description" content="<?= $description ?>">
-
+    <link rel="stylesheet" href="style/style.css">
     <title><?= $title?> </title>
 
 </head>
@@ -20,27 +20,8 @@
 
     <p>Genre</p>
         <div class="field dark2">
-            <select class="dark2" name="genre">
-
-
-                <option value="panda"             
-                <?php
-                    if($donneeGenre == "panda") echo " selected ";
-                ?>
-                >
-                Panda</option>
-                <option value="humain"
-                <?php
-                    if($donneeGenre == "humain") echo " selected ";
-                ?>
-                >
-                Humain</option>
-                <option value="robot"                 
-                <?php
-                    if($donneeGenre == "robot") echo " selected ";
-                ?>
-                >Robot</option>
-
+            <select class="dark2" name="genre">            
+                
             </select>
         </div>
 

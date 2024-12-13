@@ -1,11 +1,12 @@
 <?php
 define('__ROOT__', dirname(dirname(__FILE__)));
 
-require_once (__ROOT__ ."\models\pdo_model.php");
+require_once (__ROOT__ ."/models/pdo_model.php");
 
-require_once(__ROOT__ ."\models\login_model.php");
+require_once(__ROOT__ ."/models/login_model.php");
+require_once(__ROOT__ ."/models/profile_models.php");
 
-
+echo "Location: ". __ROOT__ ."/index.php?page=signup2";
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     //Registartion Part
@@ -33,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     $_SESSION["token"] = $token;
                     $_SESSION['nom_utilisateur'] = $pseudo;
                    
-                    header("Location: ./index.php?page=signup2");
+                    header("Location: ../index.php?page=signup2");
                 } else {
                     echo "bad";
                 }
@@ -56,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 $_SESSION['nom_utilisateur'] = $pseudo;
                 $_SESSION['token'] = $token;
 
-                header("Location: ./index.php?page=profilPage");
+                header("Location: ../index.php?page=profilPage");
 
             } else {
                 //pseudo or password incorrect
@@ -99,12 +100,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $str_horaire = implode(" ",$horaire);
         $str_tags = implode(" ",$playerTags);
         if(ProfilUpdateTags($str_horaire, $str_tags, $pseudo)) {
-            header("Location: ./index.php?page=profilePage");
+            header("Location: ../index.php?page=profilePage");
         }
     } else if (isset($_POST["jeux"])) {
+        session_start();
         $games = $_POST['jeux'];
-        if(!empty($jeux)) {
-            $pseudo = $_SESSION['pseudo'];
+        if(!empty($games)) {
+            //$pseudo = $_SESSION['nom_utilisateur'];
+            $pseudo = $_SESSION['nom_utilisateur'];
             $id = GetIDFromProfil($pseudo);
             $n = count($games);
             foreach($games as $game) {

@@ -29,5 +29,7 @@ for ($i = 0; $i < count($otherID); $i++){
      
      ";
         return $string;
-
     }
+function GetMessages($conv_id, $my_id) {
+    
+}

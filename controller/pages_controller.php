@@ -29,12 +29,15 @@ function ModifyPage() {
 function SignupGames(){
     $pseudo = ConnexionPseudo();
     $id = GetIDFromProfil($pseudo);
+    echo "test";
+    $games = GetAllGames();
     $datas = [
         "description" => "En sélectionnant tes jeux préférés tu trouveras plus d'amis ",
         "title" => "Selectionne tes jeux préférés",
         "view" => "views/signup_games_page.php",
-        "games" => GetAllGames(),
+        "games" => $games,
     ];
+    DrawPage($datas);
 }
 
 function ConversationPage() {

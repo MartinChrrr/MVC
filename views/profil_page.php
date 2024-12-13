@@ -17,12 +17,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style/style.css">
-
+  <link rel="stylesheet" href="style/style.css">
 </head>
 
 <body>
-    <?php var_dump($profil); var_dump($games);?>
+    <?php var_dump($profil); var_dump($horaires);?>
     <section class="top-bar">
         <h4>Mon Profil</h4>
         <a href="./mesjeux.php" class="button-top-bar">
@@ -65,7 +64,7 @@
                         }
                         if(count($horaires) > 0){
                             foreach($horaires as $h) {
-                                DrawHoraireProfile($h);
+                                echo DrawHoraireProfile($h);
                                 ;
                             }
                         }
@@ -103,7 +102,7 @@
         </div>
 
 <?php
-    //include("./view/tabBar.php");
+    include( __ROOT__ ."/views/bar/tabBar.php");
 ?>
     
     <script src="https://unpkg.com/lucide@latest"></script>
